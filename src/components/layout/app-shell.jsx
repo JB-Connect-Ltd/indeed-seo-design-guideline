@@ -14,7 +14,6 @@ export function AppShell({ children }) {
           </div>
           <div>
             <div className="text-sm font-semibold">Indeed_SEO</div>
-            <div className="text-xs text-muted-foreground">Admin Console</div>
           </div>
         </div>
 
