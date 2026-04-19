@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー管理 | Indeed_SEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__brand">
+          <span class="material-symbols-outlined brand__icon">work</span>
+          <div>
+            <div class="brand__title">Indeed_SEO</div>
+          </div>
+          <span class="material-symbols-outlined brand__mini">menu_open</span>
+        </div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">bar_chart</span>
+            <span>ダッシュボード</span>
+          </a>
+          <a class="nav-item" href="./index.html">
+            <span class="material-symbols-outlined nav-item__icon">account_box</span>
+            <span>求職者管理</span>
+          </a>
+          <a class="nav-item" href="./company-management.html">
+            <span class="material-symbols-outlined nav-item__icon">domain</span>
+            <span>企業管理</span>
+          </a>
+          <a class="nav-item active" href="./user-management.html">
+            <span class="material-symbols-outlined nav-item__icon">manage_accounts</span>
+            <span>ユーザー管理</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__divider"></div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">database</span>
+            <span>Q-mate管理</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <div>
+            <h1>ユーザー管理</h1>
+            <p>ユーザー情報の管理</p>
+          </div>
+          <div class="profile-chip">1M</div>
+        </header>
+
+        <section class="panel filters-panel">
+          <div class="search-bar">
+            <span class="search-bar__icon">⌕</span>
+            <input type="text" placeholder="氏名、メールアドレスで検索..." />
+            <button class="assistant-fab" type="button">✦</button>
+          </div>
+
+          <div class="filters-header">▽ 絞り込み</div>
+
+          <div class="filters-grid">
+            <label class="field">
+              <span>役割:</span>
+              <select>
+                <option>すべて</option>
+                <option>管理者</option>
+                <option>編集者</option>
+                <option>閲覧者</option>
+                <option>ダイレクター</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>ステータス:</span>
+              <select>
+                <option>すべて</option>
+                <option>招待中</option>
+                <option>登録済み</option>
+                <option>削除</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="table-panel__header">
+            <h2>ユーザー一覧 (6件)</h2>
+            <div class="table-panel__actions">
+              <a class="btn btn--primary" href="./user-create.html">＋ 新規登録</a>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>氏名</th>
+                  <th>メールアドレス</th>
+                  <th>役割</th>
+                  <th>ステータス</th>
+                  <th>登録日</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>山田 太郎</td>
+                  <td>taro.yamada@indeed-seo.jp</td>
+                  <td>管理者</td>
+                  <td><span class="status-pill status-pill--accent">登録済み</span></td>
+                  <td>2026年03月21日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>佐藤 美咲</td>
+                  <td>misaki.sato@indeed-seo.jp</td>
+                  <td>編集者</td>
+                  <td><span class="status-pill status-pill--accent">登録済み</span></td>
+                  <td>2026年03月14日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>鈴木 恒一</td>
+                  <td>koichi.suzuki@indeed-seo.jp</td>
+                  <td>ダイレクター</td>
+                  <td><span class="status-pill">招待中</span></td>
+                  <td>2026年03月08日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>高橋 玲奈</td>
+                  <td>reina.takahashi@indeed-seo.jp</td>
+                  <td>閲覧者</td>
+                  <td><span class="status-pill status-pill--accent">登録済み</span></td>
+                  <td>2026年02月25日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>伊藤 健</td>
+                  <td>ken.ito@indeed-seo.jp</td>
+                  <td>編集者</td>
+                  <td><span class="status-pill">削除</span></td>
+                  <td>2026年02月10日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./user-detail.html">
+                  <td>小林 奈々</td>
+                  <td>nana.kobayashi@indeed-seo.jp</td>
+                  <td>ダイレクター</td>
+                  <td><span class="status-pill status-pill--accent">登録済み</span></td>
+                  <td>2026年01月30日</td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./user-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <div class="pagination__left">
+              <span>1 / 6件</span>
+              <button class="page-size" type="button">15 ▾</button>
+            </div>
+            <div class="pagination__right">
+              <button class="page-nav" type="button">≪</button>
+              <button class="page-nav" type="button">‹</button>
+              <button class="page-nav current" type="button">1</button>
+              <button class="page-nav" type="button">›</button>
+              <button class="page-nav" type="button">≫</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const clickableRows = document.querySelectorAll(".clickable-row");
+
+      clickableRows.forEach((row) => {
+        row.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) return;
+
+          const href = row.dataset.href;
+          if (href) window.location.href = href;
+        });
+      });
+    </script>
+  </body>
+</html>

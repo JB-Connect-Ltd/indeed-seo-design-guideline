@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>求職者管理 | Indeed_SEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__brand">
+          <span class="material-symbols-outlined brand__icon">work</span>
+          <div>
+            <div class="brand__title">Indeed_SEO</div>
+          </div>
+          <span class="material-symbols-outlined brand__mini">menu_open</span>
+        </div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">bar_chart</span>
+            <span>ダッシュボード</span>
+          </a>
+          <a class="nav-item active" href="#">
+            <span class="material-symbols-outlined nav-item__icon">account_box</span>
+            <span>求職者管理</span>
+          </a>
+          <a class="nav-item" href="./company-management.html">
+            <span class="material-symbols-outlined nav-item__icon">domain</span>
+            <span>企業管理</span>
+          </a>
+          <a class="nav-item" href="./user-management.html">
+            <span class="material-symbols-outlined nav-item__icon">manage_accounts</span>
+            <span>ユーザー管理</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__divider"></div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">database</span>
+            <span>Q-mate管理</span>
+          </a>
+        </nav>
+
+      </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <div>
+            <h1>求職者管理</h1>
+            <p>求職者情報の管理</p>
+          </div>
+          <div class="profile-chip">1M</div>
+        </header>
+
+        <section class="panel filters-panel">
+          <div class="search-bar">
+            <span class="search-bar__icon">⌕</span>
+            <input type="text" placeholder="名前、電話番号、メールアドレスで検索..." />
+            <button class="assistant-fab" type="button">✦</button>
+          </div>
+
+          <div class="filters-header">▽ 絞り込み</div>
+
+          <div class="filters-grid">
+            <label class="field">
+              <span>流入経路:</span>
+              <select>
+                <option>すべて</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>求職者ステータス:</span>
+              <select>
+                <option>すべて</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="table-panel__header">
+            <h2>求職者一覧 (6件)</h2>
+            <div class="table-panel__actions">
+              <button class="btn btn--primary" type="button">＋ 新規登録</button>
+              <button class="btn btn--secondary" type="button">⇩ CSVエクスポート</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>名前</th>
+                  <th>電話番号</th>
+                  <th>メールアドレス</th>
+                  <th>流入経路</th>
+                  <th>登録日</th>
+                  <th>求職者ステータス</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td></td>
+                  <td>090-1234-5678</td>
+                  <td>furu.8810.27@Gmail.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年02月27日</td>
+                  <td><span class="status-pill">未対応</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td></td>
+                  <td>080-5678-1234</td>
+                  <td>furuyahayato@icloud.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年02月27日</td>
+                  <td><span class="status-pill">未対応</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td>前田 崇志</td>
+                  <td>070-2468-1357</td>
+                  <td>maeda.aqua@gmail.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年01月15日</td>
+                  <td><span class="status-pill status-pill--accent">CA面談設定中</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td>中山 創太</td>
+                  <td>090-8765-4321</td>
+                  <td>soutanakayama876@gmail.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年01月08日</td>
+                  <td><span class="status-pill">未対応</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td>木村 理香子</td>
+                  <td>080-1122-3344</td>
+                  <td>kimura.lifeap@gmail.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年01月05日</td>
+                  <td><span class="status-pill">未対応</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clickable-row" data-href="./job-seeker-detail.html">
+                  <td>マッカラー BBS</td>
+                  <td>070-9988-7766</td>
+                  <td>jbc.makara+11@gmail.com</td>
+                  <td>不動産ワークス</td>
+                  <td>2026年01月01日</td>
+                  <td><span class="status-pill">未対応</span></td>
+                  <td>
+                    <div class="actions">
+                      <a class="icon-btn icon-btn--link" href="./job-seeker-detail.html" aria-label="詳細を見る">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">visibility</span>
+                      </a>
+                      <button class="icon-btn danger" type="button" aria-label="削除">
+                        <span class="material-symbols-outlined action-icon-font" aria-hidden="true">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <div class="pagination__left">
+              <span>1 / 6件</span>
+              <button class="page-size" type="button">15 ▾</button>
+            </div>
+            <div class="pagination__right">
+              <button class="page-nav" type="button">≪</button>
+              <button class="page-nav" type="button">‹</button>
+              <button class="page-nav current" type="button">1</button>
+              <button class="page-nav" type="button">›</button>
+              <button class="page-nav" type="button">≫</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const clickableRows = document.querySelectorAll(".clickable-row");
+
+      clickableRows.forEach((row) => {
+        row.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) return;
+
+          const href = row.dataset.href;
+          if (href) window.location.href = href;
+        });
+      });
+    </script>
+  </body>
+</html>

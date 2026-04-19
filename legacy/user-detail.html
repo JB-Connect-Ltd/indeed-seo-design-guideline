@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー詳細 | Indeed_SEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__brand">
+          <span class="material-symbols-outlined brand__icon">work</span>
+          <div>
+            <div class="brand__title">Indeed_SEO</div>
+          </div>
+          <span class="material-symbols-outlined brand__mini">menu_open</span>
+        </div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">bar_chart</span>
+            <span>ダッシュボード</span>
+          </a>
+          <a class="nav-item" href="./index.html">
+            <span class="material-symbols-outlined nav-item__icon">account_box</span>
+            <span>求職者管理</span>
+          </a>
+          <a class="nav-item" href="./company-management.html">
+            <span class="material-symbols-outlined nav-item__icon">domain</span>
+            <span>企業管理</span>
+          </a>
+          <a class="nav-item active" href="./user-management.html">
+            <span class="material-symbols-outlined nav-item__icon">manage_accounts</span>
+            <span>ユーザー管理</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__divider"></div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">database</span>
+            <span>Q-mate管理</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <div class="page-header__with-back">
+            <a class="back-button" href="./user-management.html">← 戻る</a>
+            <div>
+              <h1>ユーザー管理</h1>
+              <p>ユーザー情報の詳細表示と管理</p>
+            </div>
+          </div>
+          <div class="profile-chip">1M</div>
+        </header>
+
+        <section class="detail-layout">
+          <div class="detail-layout__main">
+            <article class="panel info-panel">
+              <div class="card-head">
+                <div class="card-title">
+                  <span class="mini-icon">◌</span>
+                  <h2>ユーザー情報</h2>
+                </div>
+                <a class="btn btn--secondary" href="./user-edit.html">編集</a>
+              </div>
+
+              <div class="info-panel__summary">
+                <div class="info-panel__summary-grid">
+                  <div class="hero-panel__left">
+                    <div class="avatar-circle">👤</div>
+                    <div class="hero-panel__meta">
+                      <div class="hero-panel__mail-row">
+                        <span class="mini-icon">✉</span>
+                        <span>taro.yamada@indeed-seo.jp</span>
+                      </div>
+                      <div class="hero-panel__mail-row">
+                        <span class="mini-icon">◌</span>
+                        <span>管理者</span>
+                      </div>
+                      <div class="hero-panel__date">登録日: 2026年03月21日</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-label">プロフィール</div>
+              <div class="kv-grid">
+                <div class="kv-item">
+                  <div class="kv-label">氏名</div>
+                  <div class="kv-value">山田 太郎</div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-label">メールアドレス</div>
+                  <div class="kv-value">taro.yamada@indeed-seo.jp</div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-label">役割</div>
+                  <div class="kv-value">管理者</div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-label">ステータス</div>
+                  <div class="kv-value">ユーザー削除</div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-label">登録日</div>
+                  <div class="kv-value">2026年03月21日</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="detail-layout__side">
+            <article class="panel detail-card side-card">
+              <div class="card-head">
+                <div class="card-title">
+                  <span class="mini-icon">◌</span>
+                  <h2>ユーザー削除</h2>
+                </div>
+              </div>
+              <div class="form-stack">
+                <div class="detail-card__footer detail-card__footer--stack">
+                  <button class="btn btn--primary btn--block" type="button">✓ ユーザーを削除する</button>
+                </div>
+              </div>
+            </article>
+
+          </aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

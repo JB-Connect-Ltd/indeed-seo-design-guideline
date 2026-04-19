@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー新規登録 | Indeed_SEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__brand">
+          <span class="material-symbols-outlined brand__icon">work</span>
+          <div>
+            <div class="brand__title">Indeed_SEO</div>
+          </div>
+          <span class="material-symbols-outlined brand__mini">menu_open</span>
+        </div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">bar_chart</span>
+            <span>ダッシュボード</span>
+          </a>
+          <a class="nav-item" href="./index.html">
+            <span class="material-symbols-outlined nav-item__icon">account_box</span>
+            <span>求職者管理</span>
+          </a>
+          <a class="nav-item" href="./company-management.html">
+            <span class="material-symbols-outlined nav-item__icon">domain</span>
+            <span>企業管理</span>
+          </a>
+          <a class="nav-item active" href="./user-management.html">
+            <span class="material-symbols-outlined nav-item__icon">manage_accounts</span>
+            <span>ユーザー管理</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__divider"></div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined nav-item__icon">database</span>
+            <span>Q-mate管理</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <div class="page-header__with-back">
+            <a class="back-button" href="./user-management.html">← 戻る</a>
+            <div>
+              <h1>ユーザー管理</h1>
+              <p>新規ユーザーの登録</p>
+            </div>
+          </div>
+          <div class="profile-chip">1M</div>
+        </header>
+
+        <section class="detail-layout">
+          <div class="detail-layout__main">
+            <article class="panel info-panel">
+              <div class="card-head">
+                <div class="card-title">
+                  <span class="mini-icon">◌</span>
+                  <h2>ユーザー新規登録</h2>
+                </div>
+              </div>
+
+              <div class="info-panel__summary">
+                <div class="info-panel__summary-grid">
+                  <div class="hero-panel__left">
+                    <div class="avatar-circle">＋</div>
+                    <div class="hero-panel__meta">
+                      <div class="hero-panel__mail-row">
+                        <span class="mini-icon">◌</span>
+                        <span>新しいユーザーの基本情報を入力してください</span>
+                      </div>
+                      <div class="hero-panel__mail-row">
+                        <span class="mini-icon">◌</span>
+                        <span>登録後に招待メールが送信されます</span>
+                      </div>
+                      <div class="hero-panel__date">必須項目を入力して作成します</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-label">基本情報</div>
+              <div class="edit-form">
+                <div class="edit-form__row edit-form__row--split">
+                  <label class="edit-field">
+                    <span class="edit-field__label">姓 <span class="required-mark">※必須</span></span>
+                    <input class="edit-field__control" type="text" placeholder="例：山田" />
+                  </label>
+                  <label class="edit-field">
+                    <span class="edit-field__label">名 <span class="required-mark">※必須</span></span>
+                    <input class="edit-field__control" type="text" placeholder="例：太郎" />
+                  </label>
+                </div>
+                <div class="edit-form__row">
+                  <label class="edit-field">
+                    <span class="edit-field__label">メールアドレス <span class="required-mark">※必須</span></span>
+                    <input class="edit-field__control" type="email" placeholder="example@indeed-seo.jp" />
+                  </label>
+                </div>
+                <div class="edit-form__row">
+                  <label class="edit-field">
+                    <span class="edit-field__label">役割 <span class="required-mark">※必須</span></span>
+                    <select class="edit-field__control">
+                      <option selected disabled>選択してください</option>
+                      <option>管理者</option>
+                      <option>編集者</option>
+                      <option>閲覧者</option>
+                      <option>ダイレクター</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="detail-layout__side">
+            <article class="panel detail-card side-card">
+              <div class="card-head">
+                <div class="card-title">
+                  <span class="mini-icon">◌</span>
+                  <h2>登録アクション</h2>
+                </div>
+              </div>
+              <div class="form-stack">
+                <p class="action-card__copy">入力内容を確認して、新しいユーザーを登録します。</p>
+                <div class="detail-card__footer detail-card__footer--stack">
+                  <button class="btn btn--primary btn--block btn--action" type="button">✓ ユーザーを登録する</button>
+                </div>
+                <div class="detail-card__footer detail-card__footer--stack">
+                  <a class="btn btn--secondary btn--block btn--ghost" href="./user-management.html">キャンセル</a>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
