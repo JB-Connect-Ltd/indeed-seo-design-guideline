@@ -106,6 +106,9 @@ export function JobSeekerDetailPage() {
                 items={[
                   { label: "名前", value: seeker.name },
                   { label: "フリガナ", value: seeker.furigana },
+                  { label: "性別", value: seeker.gender },
+                  { label: "郵便番号", value: seeker.postalCode },
+                  { label: "住所", value: seeker.address },
                   { label: "電話番号", value: seeker.phone },
                   { label: "メールアドレス", value: seeker.email },
                   { label: "流入経路", value: seeker.source },

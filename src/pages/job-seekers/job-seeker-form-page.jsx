@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { jobSeekers } from "@/data/job-seekers"
 
 const sourceOptions = ["Q-Mate", "Airwork"]
+const genderOptions = ["男性", "女性", "その他", "回答しない"]
 
 export function JobSeekerEditPage() {
   const { id = "1" } = useParams()
@@ -55,6 +56,17 @@ function JobSeekerFormPage({ mode, seeker }) {
               <Field label="フリガナ">
                 <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.furigana ?? ""} placeholder="例：ヤマダ タロウ" />
               </Field>
+              <Field label="性別">
+                <StaticSelect value={seeker?.gender} placeholder="性別を選択してください" options={genderOptions} />
+              </Field>
+              <Field label="郵便番号">
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.postalCode ?? ""} placeholder="例：150-0002" />
+              </Field>
+              <div className="md:col-span-2">
+                <Field label="住所">
+                  <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.address ?? ""} placeholder="例：東京都渋谷区渋谷1-2-3" />
+                </Field>
+              </div>
               <Field label="電話番号" required>
                 <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.phone ?? ""} placeholder="例：090-1234-5678" />
               </Field>
