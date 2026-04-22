@@ -1,4 +1,3 @@
-import { Building2 } from "lucide-react"
 import { NavLink } from "react-router-dom"
 
 import { Separator } from "@/components/ui/separator"
@@ -9,11 +8,9 @@ export function AppShell({ children }) {
     <div className="min-h-screen md:grid md:grid-cols-[260px_1fr]">
       <aside className="border-b border-border bg-white/80 px-4 py-5 backdrop-blur md:border-r md:border-b-0">
         <div className="flex items-center gap-3 px-2 pb-5">
-          <div className="flex size-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-            <Building2 className="size-5" />
-          </div>
+          <img src="/rootstack-mark.svg" alt="ROOTSTACK" className="size-10 rounded-2xl" />
           <div>
-            <div className="text-sm font-semibold">Indeed_SEO</div>
+            <div className="text-sm font-extrabold tracking-[0.12em]">ROOTSTACK</div>
           </div>
         </div>
 

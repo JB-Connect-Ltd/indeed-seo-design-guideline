@@ -1,0 +1,15 @@
+<svg width="220" height="56" viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">ROOTSTACK logo</title>
+  <desc id="desc">A stacked square mark with root-like lines and the ROOTSTACK wordmark.</desc>
+  <rect width="220" height="56" rx="14" fill="white"/>
+  <g transform="translate(10 8)">
+    <rect x="0" y="0" width="40" height="40" rx="12" fill="#111111"/>
+    <path d="M11 26H29" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M14 20H26" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M17 14H23" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M20 26V32" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M20 32L15 35" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M20 32L25 35" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <text x="62" y="35" fill="#111111" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.6">ROOTSTACK</text>
+</svg>
