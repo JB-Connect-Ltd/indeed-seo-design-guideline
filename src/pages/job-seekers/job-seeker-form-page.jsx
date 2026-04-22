@@ -50,14 +50,26 @@ function JobSeekerFormPage({ mode, seeker }) {
             />
 
             <div className="grid gap-5 md:grid-cols-2">
-              <Field label="氏名" required>
-                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.name ?? ""} placeholder="例：山田 太郎" />
+              <Field label="姓" required>
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.lastName ?? ""} placeholder="例：山田" />
               </Field>
-              <Field label="フリガナ">
-                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.furigana ?? ""} placeholder="例：ヤマダ タロウ" />
+              <Field label="名">
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.firstName ?? ""} placeholder="例：太郎" />
+              </Field>
+              <Field label="セイ">
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.lastNameKana ?? ""} placeholder="例：ヤマダ" />
+              </Field>
+              <Field label="メイ">
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.firstNameKana ?? ""} placeholder="例：タロウ" />
               </Field>
               <Field label="性別">
                 <StaticSelect value={seeker?.gender} placeholder="性別を選択してください" options={genderOptions} />
+              </Field>
+              <Field label="電話番号" required>
+                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.phone ?? ""} placeholder="例：090-1234-5678" />
+              </Field>
+              <Field label="メールアドレス">
+                <Input className="h-12 rounded-2xl bg-background" type="email" defaultValue={seeker?.email ?? ""} placeholder="example@indeed-seo.jp" />
               </Field>
               <Field label="郵便番号">
                 <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.postalCode ?? ""} placeholder="例：150-0002" />
@@ -67,12 +79,6 @@ function JobSeekerFormPage({ mode, seeker }) {
                   <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.address ?? ""} placeholder="例：東京都渋谷区渋谷1-2-3" />
                 </Field>
               </div>
-              <Field label="電話番号" required>
-                <Input className="h-12 rounded-2xl bg-background" defaultValue={seeker?.phone ?? ""} placeholder="例：090-1234-5678" />
-              </Field>
-              <Field label="メールアドレス">
-                <Input className="h-12 rounded-2xl bg-background" type="email" defaultValue={seeker?.email ?? ""} placeholder="example@indeed-seo.jp" />
-              </Field>
               <Field label="流入経路" required>
                 <StaticSelect value={seeker?.source} placeholder="流入経路を選択してください" options={sourceOptions} />
               </Field>
