@@ -43,9 +43,9 @@ export function SearchPanel({ placeholder, filters }) {
 
 export function StatusBadge({ value }) {
   const variant =
-    value === "登録済み" || value === "採用活動中" || value === "採用済み" || value === "公開中" || value === "募集中"
+    value === "登録済み" || value === "採用活動中" || value === "公開中" || value === "募集中"
       ? "default"
-      : value === "ユーザー削除" || value === "削除" || value === "不採用" || value === "終了"
+      : value === "ユーザー削除" || value === "削除" || value === "他社紹介NG" || value === "終了"
         ? "destructive"
         : "secondary"
 

@@ -13,7 +13,7 @@ import { companies, publicJobs } from "@/data/companies"
 import { jobSeekers, jobSeekerStatusOptions } from "@/data/job-seekers"
 
 const callTargetSeekers = jobSeekers.filter(
-  (seeker) => seeker.appliedJobIds?.length && seeker.status !== "電話連絡済み"
+  (seeker) => seeker.appliedJobIds?.length && seeker.status === "採用活動中"
 )
 const buildCallTargetRows = () =>
   callTargetSeekers.flatMap((seeker) =>
