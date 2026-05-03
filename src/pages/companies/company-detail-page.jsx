@@ -155,37 +155,22 @@ export function CompanyDetailPage() {
                       <FileText className="size-5" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-lg font-semibold">新規ヒアリングフォーム</div>
+                      <div className="text-lg font-semibold">ヒアリングフォームを新規作成</div>
                       <div className="mt-1 text-sm leading-6 text-muted-foreground">
                         企業担当者にヒアリングフォームURLを送信し、URL先のフォームに入力してもらいます。
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2 md:w-72 md:shrink-0">
-                    <a
-                      href={`/companies/${company.id}/hearing-form`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={buttonVariants({ variant: "outline", className: "rounded-2xl" })}
-                      onClick={() => window.localStorage.removeItem("hearingFormPrefillNoteId")}
-                    >
-                      フォームURLをプレビューする
-                      <ExternalLink className="size-4" />
-                    </a>
-                    <Button
-                      className="rounded-2xl"
-                      onClick={() => {
-                        window.localStorage.removeItem("hearingFormPrefillNoteId")
-                        openSendDialog({
-                          label: "新規ヒアリングフォーム",
-                          email: company.email,
-                          url: hearingFormUrl,
-                        })
-                      }}
-                    >
-                      フォームURLを送信する
-                    </Button>
-                  </div>
+                  <Button
+                    className="rounded-2xl md:min-w-72"
+                    size="lg"
+                    onClick={() => {
+                      window.localStorage.removeItem("hearingFormPrefillNoteId")
+                      navigate(`/companies/${company.id}/hearing-form`)
+                    }}
+                  >
+                    ヒアリングフォームを新規作成する
+                  </Button>
                 </div>
               </div>
               {companyPublicJobs.length ? (
