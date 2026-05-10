@@ -8,6 +8,7 @@ import { CompanyHearingFormPage } from "@/pages/companies/company-hearing-form-p
 import { CompanyJobDetailPage } from "@/pages/companies/company-job-detail-page"
 import { CompanyJobEditPage } from "@/pages/companies/company-job-form-page"
 import { CompanyManagementPage } from "@/pages/companies/company-management-page"
+import { SecondaryScreeningFormConfirmPage, SecondaryScreeningFormPage } from "@/pages/companies/secondary-screening-form-page"
 import { DashboardPage } from "@/pages/dashboard/dashboard-page"
 import { JobSeekerDetailPage } from "@/pages/job-seekers/job-seeker-detail-page"
 import { JobSeekerCreatePage, JobSeekerEditPage } from "@/pages/job-seekers/job-seeker-form-page"
@@ -23,6 +24,8 @@ export function AppRouter() {
       <Routes>
         <Route path="/companies/:id/hearing-form" element={<CompanyHearingFormPage />} />
         <Route path="/companies/:id/hearing-form/confirm" element={<CompanyHearingConfirmPage />} />
+        <Route path="/secondary-screening-form" element={<SecondaryScreeningFormPage />} />
+        <Route path="/secondary-screening-form/confirm" element={<SecondaryScreeningFormConfirmPage />} />
         <Route
           path="*"
           element={

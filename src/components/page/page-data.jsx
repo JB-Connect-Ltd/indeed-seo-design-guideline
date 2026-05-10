@@ -21,7 +21,7 @@ export function KvGrid({ items }) {
       {items.map((item, index) => (
         <div key={item.key ?? index} className="grid gap-3 border-b border-border py-5 md:grid-cols-[180px_1fr]">
           <div className="text-sm text-muted-foreground">{item.label}</div>
-          <div className="font-medium">{item.value}</div>
+          <div className="font-medium whitespace-pre-line break-words">{item.value}</div>
         </div>
       ))}
     </div>

@@ -115,28 +115,30 @@ export const hearingConfirmationSections = [
 
 export const secondaryScreeningSections = [
   {
-    title: "審査対象情報",
+    title: "企業情報",
     items: [
-      { label: "募集職種", value: "営業" },
+      { label: "企業名", value: "株式会社ネクストホーム" },
+      { label: "求人名", value: "営業アシスタント" },
+      { label: "職種", value: "営業" },
       { label: "雇用形態", value: "正社員" },
-      { label: "勤務地", value: "東京都渋谷区道玄坂2-10-7 ネクスト渋谷ビル 8F" },
-      { label: "給与帯", value: "300,000円〜450,000円" },
     ],
   },
   {
-    title: "確認項目",
+    title: "二次書類審査内容",
     items: [
-      { label: "応募条件の確認", value: "未経験歓迎、学歴不問、自動車免許(ATでOK)が必要" },
-      { label: "就業条件の確認", value: "固定時間制 / 平均所定労働時間 160時間 / 平均残業時間 30分" },
-      { label: "選考フロー確認", value: "書類選考 → 一次面接(オンライン) → 最終面接(来社)" },
+      { label: "質問1", value: "当企業に応募する理由を教えてください。" },
+      { label: "質問2", value: "自分自身をどの様に当企業へ貢献できますか。" },
+      { label: "質問3", value: "当企業に将来にどのような姿になりますでしょうか。" },
     ],
   },
   {
-    title: "審査メモ",
+    title: "同意事項",
     items: [
-      { label: "確認担当", value: "山田 太郎" },
-      { label: "確認状況", value: "作成済み" },
-      { label: "補足", value: "ヒアリング内容をもとに二次書類審査用の確認項目を整理済み。" },
+      {
+        label: "チェック項目",
+        value:
+          "☑ 求職者情報をシステムに保持すること、および求職者が新しい勤め先をすばやく見つけられるよう、求職者情報を他の企業へ紹介することに同意します。",
+      },
     ],
   },
 ]

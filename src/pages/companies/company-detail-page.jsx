@@ -14,7 +14,7 @@ import { DetailLayout, InfoCard } from "@/components/page/page-cards"
 import { SummaryBlock, KvGrid } from "@/components/page/page-data"
 import { PageIntro } from "@/components/page/page-header"
 import { TaskAlertCard } from "@/components/tasks/task-alert-card"
-import { aiInputOutputItems, companies, hearingConfirmationSections, hearingImagePreviews, publicJobs, secondaryScreeningSections } from "@/data/companies"
+import { aiInputOutputItems, companies, hearingConfirmationSections, hearingImagePreviews, publicJobs } from "@/data/companies"
 import { jobSeekers } from "@/data/job-seekers"
 import { companyTasks } from "@/data/tasks"
 
@@ -23,7 +23,6 @@ export function CompanyDetailPage() {
   const { id = "1" } = useParams()
   const company = companies.find((item) => item.id === id) ?? companies[0]
   const [selectedHearingJob, setSelectedHearingJob] = useState(null)
-  const [isSecondaryDrawerOpen, setIsSecondaryDrawerOpen] = useState(false)
   const [selectedAiItem, setSelectedAiItem] = useState(null)
   const [sendDialogTarget, setSendDialogTarget] = useState(null)
   const [deleteDialogTarget, setDeleteDialogTarget] = useState(null)
@@ -138,6 +137,31 @@ export function CompanyDetailPage() {
                   { key: "company-forwarding-email", label: temporaryLabel("転送元メールアドレス"), value: company.forwardingSourceEmail },
                   { key: "company-qmate", label: temporaryLabel("Qmate企業 id"), value: company.qmateCompanyId },
                   { key: "company-timerex", label: temporaryLabel("Timerex"), value: company.timerex },
+                  {
+                    key: "company-secondary-screening-form",
+                    label: temporaryLabel("二次書類審査フォーム"),
+                    value: (
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <span>全企業共通 / 求職者送付用フォーム</span>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="rounded-xl whitespace-nowrap [&_svg]:shrink-0"
+                          asChild
+                        >
+                          <a
+                            href="/secondary-screening-form"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5"
+                          >
+                            フォームURLプレビュー
+                            <ExternalLink className="size-3.5" />
+                          </a>
+                        </Button>
+                      </div>
+                    ),
+                  },
                   { key: "company-created-at", label: "登録日", value: company.createdAt },
                   { key: "company-address", label: "住所", value: company.address },
                   { key: "company-notes", label: "備考", value: company.notes },
@@ -322,53 +346,6 @@ export function CompanyDetailPage() {
             </Table>
           </InfoCard>
 
-          <InfoCard title={<span>二次書類審査フォーム <span className="text-red-500">※暫定</span></span>}>
-            <div className="space-y-4">
-              <div className="rounded-3xl border border-foreground/15 bg-gradient-to-br from-white to-muted/30 p-5 shadow-sm">
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-start gap-4">
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-sm">
-                      <FileText className="size-5" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-semibold">
-                        二次書類審査フォーム作成 <span className="text-red-500">※暫定</span>
-                      </div>
-                      <div className="mt-1 text-sm leading-6 text-muted-foreground">
-                        ヒアリング内容をもとに、二次書類審査フォームを作成します。
-                      </div>
-                    </div>
-                  </div>
-                  <Button className="rounded-2xl md:min-w-72" size="lg">
-                    二次書類審査フォームを作成する
-                  </Button>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsSecondaryDrawerOpen(true)}
-                className="flex w-full items-center justify-between rounded-2xl border border-border bg-muted/10 px-5 py-4 text-left transition hover:bg-muted/20"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-white ring-1 ring-border">
-                    <FileText className="size-4 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">二次書類審査フォーム内容を確認する</div>
-                    <div className="text-sm text-muted-foreground">右サイド画面で作成内容を確認できます</div>
-                  </div>
-                </div>
-                <span className="text-sm font-medium text-muted-foreground">開く</span>
-              </button>
-              <KvGrid
-                items={[
-                  { key: "secondary-created-at", label: "登録日", value: company.secondaryFormCreatedAt },
-                  { key: "secondary-updated-at", label: "更新日", value: company.secondaryFormUpdatedAt },
-                ]}
-              />
-            </div>
-          </InfoCard>
-
           <InfoCard title={`応募者一覧 (${applicants.length}件)`}>
             <Table className="table-fixed">
               <TableHeader>
@@ -466,14 +443,6 @@ export function CompanyDetailPage() {
         images={hearingImagePreviews}
         title={selectedHearingJob ? `${selectedHearingJob.title}のヒアリング内容` : "ヒアリング内容"}
         description="求人ごとのヒアリングフォーム入力内容を確認できます。"
-      />
-      <HearingNoteDrawer
-        open={isSecondaryDrawerOpen}
-        onClose={() => setIsSecondaryDrawerOpen(false)}
-        sections={secondaryScreeningSections}
-        images={[]}
-        title="二次書類審査フォーム内容 ※暫定"
-        description="作成された二次書類審査フォームの内容を確認できます。"
       />
       <HearingNoteDrawer
         open={Boolean(selectedAiItem)}

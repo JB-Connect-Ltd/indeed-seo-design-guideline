@@ -43,7 +43,7 @@ export function SearchPanel({ placeholder, filters }) {
 
 export function StatusBadge({ value }) {
   const variant =
-    value === "登録済み" || value === "採用活動中" || value === "公開中" || value === "募集中"
+    value === "登録済み" || value === "採用活動中" || value === "公開中" || value === "募集中" || value === "二次書類審査受領"
       ? "default"
       : value === "ユーザー削除" || value === "削除" || value === "他社紹介NG" || value === "終了"
         ? "destructive"

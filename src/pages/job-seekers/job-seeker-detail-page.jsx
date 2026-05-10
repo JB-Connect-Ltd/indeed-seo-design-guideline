@@ -1,7 +1,8 @@
-import { ChevronDown, ChevronUp, Mail, Pencil, User } from "lucide-react"
+import { ChevronDown, ChevronUp, ExternalLink, Mail, Pencil, User } from "lucide-react"
 import { useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
+import { SecondaryScreeningSendDialog } from "@/components/job-seekers/secondary-screening-send-dialog"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
@@ -9,6 +10,7 @@ import { DetailLayout, InfoCard, SideActionCard } from "@/components/page/page-c
 import { SummaryBlock, KvGrid } from "@/components/page/page-data"
 import { Field, StaticSelect } from "@/components/page/page-forms"
 import { PageIntro } from "@/components/page/page-header"
+import { StatusBadge } from "@/components/page/page-lists"
 import { TaskAlertCard } from "@/components/tasks/task-alert-card"
 import { companies, publicJobs } from "@/data/companies"
 import { applicationStatusOptions, jobSeekers, jobSeekerStatusOptions, memoHistory } from "@/data/job-seekers"
@@ -19,9 +21,19 @@ export function JobSeekerDetailPage() {
   const { id = "1" } = useParams()
   const seeker = jobSeekers.find((item) => item.id === id) ?? jobSeekers[0]
   const [showAllMemos, setShowAllMemos] = useState(false)
+  const [sendDialogTarget, setSendDialogTarget] = useState(null)
   const visibleMemos = showAllMemos ? memoHistory : memoHistory.slice(0, 1)
   const appliedJobs = publicJobs.filter((job) => seeker.appliedJobIds?.includes(job.id))
   const seekerTaskAlerts = jobSeekerTasks.filter((task) => task.seekerId === seeker.id)
+  const [secondaryScreeningStatuses, setSecondaryScreeningStatuses] = useState(() =>
+    seeker.id === "1"
+      ? {
+          "job-1": "二次書類審査受領",
+          "job-2": "二次書類審査送信済み",
+          "job-4": "二次書類審査下書き保存",
+        }
+      : {}
+  )
   const [applicationStatuses, setApplicationStatuses] = useState(() =>
     Object.fromEntries(
       (seeker.appliedJobIds ?? []).map((jobId) => [
@@ -31,6 +43,17 @@ export function JobSeekerDetailPage() {
     )
   )
   const getCompanyName = (companyId) => companies.find((company) => company.id === companyId)?.name ?? "-"
+  const closeSendDialog = () => setSendDialogTarget(null)
+  const confirmSendDialog = () => {
+    if (sendDialogTarget?.jobId) {
+      setSecondaryScreeningStatuses((current) => ({
+        ...current,
+        [sendDialogTarget.jobId]: "二次書類審査送信済み",
+      }))
+    }
+
+    closeSendDialog()
+  }
   return (
     <>
       <PageIntro title="求職者管理" description="求職者情報の詳細表示と管理" backTo="/job-seekers" />
@@ -127,7 +150,7 @@ export function JobSeekerDetailPage() {
                     key={job.id}
                     role="button"
                     tabIndex={0}
-                    className="grid gap-4 rounded-2xl border border-border bg-muted/10 p-4 transition hover:bg-muted/20 md:grid-cols-[1fr_auto] md:items-center"
+                    className="grid gap-4 rounded-2xl border border-border bg-muted/10 p-4 transition hover:bg-muted/20 md:grid-cols-[1fr_auto] md:items-start"
                     onClick={() => navigate(`/companies/${job.companyId}/jobs/${job.id}`)}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
@@ -167,6 +190,40 @@ export function JobSeekerDetailPage() {
                         </Select>
                       </div>
                       <div>応募日 {seeker.createdAt}</div>
+                      <div
+                        className="flex flex-wrap items-center justify-end gap-2"
+                        onClick={(event) => event.stopPropagation()}
+                        onKeyDown={(event) => event.stopPropagation()}
+                      >
+                        <a
+                          href="/secondary-screening-form"
+                          target="_blank"
+                          rel="noreferrer"
+                          className={buttonVariants({ variant: "outline", size: "sm" })}
+                        >
+                          二次書類審査フォーム
+                          <ExternalLink className="size-4" />
+                        </a>
+                        {secondaryScreeningStatuses[job.id] ? (
+                          <StatusBadge value={secondaryScreeningStatuses[job.id]} />
+                        ) : (
+                          <Button
+                            size="sm"
+                            className="rounded-xl"
+                            onClick={(event) => {
+                              event.stopPropagation()
+                              setSendDialogTarget({
+                                jobId: job.id,
+                                label: `${job.title}の二次書類審査フォーム`,
+                                phone: seeker.phone,
+                                url: `/secondary-screening-form`,
+                              })
+                            }}
+                          >
+                            二次書類審査フォーム送信
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -179,6 +236,12 @@ export function JobSeekerDetailPage() {
           </InfoCard>
         </div>
       </DetailLayout>
+      <SecondaryScreeningSendDialog
+        open={Boolean(sendDialogTarget)}
+        onClose={closeSendDialog}
+        onConfirm={confirmSendDialog}
+        target={sendDialogTarget}
+      />
     </>
   )
 }

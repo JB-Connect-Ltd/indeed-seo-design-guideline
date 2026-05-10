@@ -7,6 +7,8 @@ export const applicationStatusOptions = [
   "書類選考中",
   "書類合格",
   "書類不合格",
+  "二次書類審査中",
+  "二次書類審査不合格",
   "面接調整開始",
   "面接日確定",
   "面接合格",
@@ -18,7 +20,7 @@ export const applicationStatusOptions = [
 ]
 
 export const jobSeekers = [
-  { id: "1", companyId: "1", appliedJobIds: ["job-1", "job-4"], applicationStatuses: { "job-1": "書類選考中", "job-4": "面接調整開始" }, name: "田中 花子", lastName: "田中", firstName: "花子", furigana: "タナカ ハナコ", lastNameKana: "タナカ", firstNameKana: "ハナコ", gender: "女性", postalCode: "150-0002", address: "東京都渋谷区渋谷1-2-3", phone: "090-1234-5678", email: "tanaka.hanako@example.com", source: "Q-Mate", createdAt: "2026年02月27日", interviewAt: "2026年04月18日 10:00", status: "採用活動中", memo: "営業経験あり。土日面接希望。" },
+  { id: "1", companyId: "1", appliedJobIds: ["job-1", "job-2", "job-4", "job-5"], applicationStatuses: { "job-1": "二次書類審査中", "job-2": "二次書類審査不合格", "job-4": "面接調整開始", "job-5": "書類合格" }, name: "田中 花子", lastName: "田中", firstName: "花子", furigana: "タナカ ハナコ", lastNameKana: "タナカ", firstNameKana: "ハナコ", gender: "女性", postalCode: "150-0002", address: "東京都渋谷区渋谷1-2-3", phone: "090-1234-5678", email: "tanaka.hanako@example.com", source: "Q-Mate", createdAt: "2026年02月27日", interviewAt: "2026年04月18日 10:00", status: "採用活動中", memo: "営業経験あり。土日面接希望。" },
   { id: "2", companyId: "1", appliedJobIds: ["job-2"], applicationStatuses: { "job-2": "書類送付依頼" }, name: "古谷 颯人", lastName: "古谷", firstName: "颯人", furigana: "フルヤ ハヤト", lastNameKana: "フルヤ", firstNameKana: "ハヤト", gender: "男性", postalCode: "160-0022", address: "東京都新宿区新宿2-4-5", phone: "080-5678-1234", email: "furuyahayato@icloud.com", source: "Airwork", createdAt: "2026年02月27日", interviewAt: "未設定", status: "採用活動中", memo: "電話連絡は平日18時以降が希望。" },
   { id: "3", companyId: "2", appliedJobIds: [], name: "前田 崇志", lastName: "前田", firstName: "崇志", furigana: "マエダ タカシ", lastNameKana: "マエダ", firstNameKana: "タカシ", gender: "男性", postalCode: "220-0012", address: "神奈川県横浜市西区みなとみらい3-1-1", phone: "070-2468-1357", email: "maeda.aqua@gmail.com", source: "Q-Mate", createdAt: "2026年01月15日", interviewAt: "2026年04月19日 14:00", status: "採用活動中", memo: "接客経験が長く、オンライン面談調整済み。" },
   { id: "4", companyId: "3", appliedJobIds: [], name: "中山 創太", lastName: "中山", firstName: "創太", furigana: "ナカヤマ ソウタ", lastNameKana: "ナカヤマ", firstNameKana: "ソウタ", gender: "男性", postalCode: "330-0846", address: "埼玉県さいたま市大宮区大門町1-1", phone: "090-8765-4321", email: "soutanakayama876@gmail.com", source: "Airwork", createdAt: "2026年01月08日", interviewAt: "未設定", status: "他社紹介NG", memo: "履歴書確認待ち。" },
