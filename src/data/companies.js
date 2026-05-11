@@ -8,11 +8,11 @@ export const companies = [
 ]
 
 export const publicJobs = [
-  { id: "job-1", companyId: "1", title: "営業アシスタント", catchCopy: "未経験から不動産営業を支える、成長実感のある仕事です。", detail: "勤務地: 東京都渋谷区", status: "募集中", date: "2026年03月02日" },
-  { id: "job-2", companyId: "1", title: "カスタマーサポート", catchCopy: "お客様の不安を安心に変える、暮らしに寄り添うサポート職。", detail: "勤務地: 東京都新宿区", status: "終了", date: "2026年03月10日" },
-  { id: "job-3", companyId: "1", title: "不動産事務", catchCopy: "正確な事務対応で、営業チームとお客様を支えるポジション。", detail: "勤務地: 東京都渋谷区", status: "非公開", date: "2026年03月18日" },
-  { id: "job-4", companyId: "1", title: "未経験歓迎の反響営業スタッフ兼お客様サポート担当（オンライン面談・物件案内・契約フォローまで担当）", catchCopy: "問い合わせ対応中心。提案に集中できる反響営業です。", detail: "勤務地: 東京都渋谷区", status: "管理者確認中", date: "2026年03月22日" },
-  { id: "job-5", companyId: "1", title: "賃貸営業サポート", catchCopy: "物件探しをスムーズに進める、チーム型の営業サポート。", detail: "勤務地: 東京都渋谷区", status: "企業確認中", date: "2026年03月25日" },
+  { id: "job-1", companyId: "1", title: "営業アシスタント", jobType: "営業", employmentType: "正社員", catchCopy: "未経験から不動産営業を支える、成長実感のある仕事です。", detail: "勤務地: 東京都渋谷区", status: "募集中", date: "2026年03月02日" },
+  { id: "job-2", companyId: "1", title: "カスタマーサポート", jobType: "カスタマーサポート", employmentType: "正社員", catchCopy: "お客様の不安を安心に変える、暮らしに寄り添うサポート職。", detail: "勤務地: 東京都新宿区", status: "終了", date: "2026年03月10日" },
+  { id: "job-3", companyId: "1", title: "不動産事務", jobType: "事務", employmentType: "正社員", catchCopy: "正確な事務対応で、営業チームとお客様を支えるポジション。", detail: "勤務地: 東京都渋谷区", status: "非公開", date: "2026年03月18日" },
+  { id: "job-4", companyId: "1", title: "未経験歓迎の反響営業スタッフ兼お客様サポート担当（オンライン面談・物件案内・契約フォローまで担当）", jobType: "営業", employmentType: "正社員", catchCopy: "問い合わせ対応中心。提案に集中できる反響営業です。", detail: "勤務地: 東京都渋谷区", status: "管理者確認中", date: "2026年03月22日" },
+  { id: "job-5", companyId: "1", title: "賃貸営業サポート", jobType: "営業サポート", employmentType: "契約社員", catchCopy: "物件探しをスムーズに進める、チーム型の営業サポート。", detail: "勤務地: 東京都渋谷区", status: "企業確認中", date: "2026年03月25日" },
 ]
 
 export const hearingImagePreviews = [

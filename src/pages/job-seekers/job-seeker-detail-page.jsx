@@ -1,7 +1,9 @@
 import { ChevronDown, ChevronUp, ExternalLink, Mail, Pencil, User } from "lucide-react"
 import { useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
+import { InterviewScheduleSendDialog } from "@/components/job-seekers/interview-schedule-send-dialog"
+import { JobApplicationDrawer } from "@/components/job-seekers/job-application-drawer"
 import { SecondaryScreeningSendDialog } from "@/components/job-seekers/secondary-screening-send-dialog"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -13,15 +15,16 @@ import { PageIntro } from "@/components/page/page-header"
 import { StatusBadge } from "@/components/page/page-lists"
 import { TaskAlertCard } from "@/components/tasks/task-alert-card"
 import { companies, publicJobs } from "@/data/companies"
-import { applicationStatusOptions, jobSeekers, jobSeekerStatusOptions, memoHistory } from "@/data/job-seekers"
+import { applicationStatusOptions, jobSeekers, jobSeekerStatusOptions, memoHistory, secondaryScreeningAnswerSamples, secondaryScreeningConsentText } from "@/data/job-seekers"
 import { jobSeekerTasks } from "@/data/tasks"
 
 export function JobSeekerDetailPage() {
-  const navigate = useNavigate()
   const { id = "1" } = useParams()
   const seeker = jobSeekers.find((item) => item.id === id) ?? jobSeekers[0]
   const [showAllMemos, setShowAllMemos] = useState(false)
   const [sendDialogTarget, setSendDialogTarget] = useState(null)
+  const [interviewDialogTarget, setInterviewDialogTarget] = useState(null)
+  const [selectedAppliedJob, setSelectedAppliedJob] = useState(null)
   const visibleMemos = showAllMemos ? memoHistory : memoHistory.slice(0, 1)
   const appliedJobs = publicJobs.filter((job) => seeker.appliedJobIds?.includes(job.id))
   const seekerTaskAlerts = jobSeekerTasks.filter((task) => task.seekerId === seeker.id)
@@ -34,6 +37,15 @@ export function JobSeekerDetailPage() {
         }
       : {}
   )
+  const [interviewScheduleStatuses, setInterviewScheduleStatuses] = useState(() =>
+    seeker.id === "2"
+      ? {
+          "job-2": { status: "送信済み" },
+          "job-3": { status: "日程確定", confirmedAt: "2026年05月14日 14:00" },
+          "job-4": { status: "期限切れ" },
+        }
+      : {}
+  )
   const [applicationStatuses, setApplicationStatuses] = useState(() =>
     Object.fromEntries(
       (seeker.appliedJobIds ?? []).map((jobId) => [
@@ -43,6 +55,14 @@ export function JobSeekerDetailPage() {
     )
   )
   const getCompanyName = (companyId) => companies.find((company) => company.id === companyId)?.name ?? "-"
+  const getCompany = (companyId) => companies.find((company) => company.id === companyId)
+  const selectedApplicationAnswers = selectedAppliedJob
+    ? secondaryScreeningAnswerSamples[seeker.id]?.[selectedAppliedJob.id] ?? [
+        { question: "当企業に応募する理由を教えてください。", answer: "未回答" },
+        { question: "自分自身をどの様に当企業へ貢献できますか。", answer: "未回答" },
+        { question: "当企業に将来にどのような姿になりますでしょうか。", answer: "未回答" },
+      ]
+    : []
   const closeSendDialog = () => setSendDialogTarget(null)
   const confirmSendDialog = () => {
     if (sendDialogTarget?.jobId) {
@@ -53,6 +73,17 @@ export function JobSeekerDetailPage() {
     }
 
     closeSendDialog()
+  }
+  const closeInterviewDialog = () => setInterviewDialogTarget(null)
+  const confirmInterviewDialog = () => {
+    if (interviewDialogTarget?.jobId) {
+      setInterviewScheduleStatuses((current) => ({
+        ...current,
+        [interviewDialogTarget.jobId]: { status: "送信済み" },
+      }))
+    }
+
+    closeInterviewDialog()
   }
   return (
     <>
@@ -151,16 +182,27 @@ export function JobSeekerDetailPage() {
                     role="button"
                     tabIndex={0}
                     className="grid gap-4 rounded-2xl border border-border bg-muted/10 p-4 transition hover:bg-muted/20 md:grid-cols-[1fr_auto] md:items-start"
-                    onClick={() => navigate(`/companies/${job.companyId}/jobs/${job.id}`)}
+                    onClick={() => setSelectedAppliedJob(job)}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
-                        navigate(`/companies/${job.companyId}/jobs/${job.id}`)
+                        setSelectedAppliedJob(job)
                       }
                     }}
                   >
                     <div>
                       <div className="font-semibold">{job.title}</div>
                       <div className="mt-1 text-sm text-muted-foreground">{getCompanyName(job.companyId)}</div>
+                      <a
+                        href={`/companies/${job.companyId}/jobs/${job.id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`${buttonVariants({ variant: "outline", size: "sm" })} mt-3 rounded-xl`}
+                        onClick={(event) => event.stopPropagation()}
+                        onKeyDown={(event) => event.stopPropagation()}
+                      >
+                        求人詳細を確認する
+                        <ExternalLink className="size-4" />
+                      </a>
                     </div>
                     <div className="flex flex-col gap-3 text-sm text-muted-foreground md:items-end">
                       <div
@@ -224,6 +266,41 @@ export function JobSeekerDetailPage() {
                           </Button>
                         )}
                       </div>
+                      <div
+                        className="flex flex-wrap items-center justify-end gap-2"
+                        onClick={(event) => event.stopPropagation()}
+                        onKeyDown={(event) => event.stopPropagation()}
+                      >
+                        <span className="whitespace-nowrap text-xs font-semibold text-muted-foreground">
+                          面接日程調整
+                        </span>
+                        {interviewScheduleStatuses[job.id] ? (
+                          <>
+                            <StatusBadge value={interviewScheduleStatuses[job.id].status} />
+                            {interviewScheduleStatuses[job.id].status === "日程確定" && interviewScheduleStatuses[job.id].confirmedAt ? (
+                              <span className="text-xs font-medium text-muted-foreground">
+                                確定日 {interviewScheduleStatuses[job.id].confirmedAt}
+                              </span>
+                            ) : null}
+                          </>
+                        ) : (
+                          <Button
+                            size="sm"
+                            className="rounded-xl"
+                            onClick={(event) => {
+                              event.stopPropagation()
+                              setInterviewDialogTarget({
+                                jobId: job.id,
+                                label: `${job.title}の面接日程調整`,
+                                phone: seeker.phone,
+                                url: getCompany(job.companyId)?.timerex ?? "/",
+                              })
+                            }}
+                          >
+                            面接日程調整を連絡
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -241,6 +318,33 @@ export function JobSeekerDetailPage() {
         onClose={closeSendDialog}
         onConfirm={confirmSendDialog}
         target={sendDialogTarget}
+      />
+      <InterviewScheduleSendDialog
+        open={Boolean(interviewDialogTarget)}
+        onClose={closeInterviewDialog}
+        onConfirm={confirmInterviewDialog}
+        target={interviewDialogTarget}
+      />
+      <JobApplicationDrawer
+        open={Boolean(selectedAppliedJob)}
+        onClose={() => setSelectedAppliedJob(null)}
+        job={selectedAppliedJob}
+        companyName={selectedAppliedJob ? getCompanyName(selectedAppliedJob.companyId) : ""}
+        interviewSchedule={selectedAppliedJob ? interviewScheduleStatuses[selectedAppliedJob.id] : null}
+        screeningAnswers={selectedApplicationAnswers}
+        consentText={secondaryScreeningConsentText}
+        onReschedule={() => {
+          if (!selectedAppliedJob) {
+            return
+          }
+
+          setInterviewDialogTarget({
+            jobId: selectedAppliedJob.id,
+            label: `${selectedAppliedJob.title}の面接日程調整`,
+            phone: seeker.phone,
+            url: getCompany(selectedAppliedJob.companyId)?.timerex ?? "/",
+          })
+        }}
       />
     </>
   )
